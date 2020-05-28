@@ -8,7 +8,11 @@
     <div class="logo">
       <a href="#" class="simple-text logo-mini">
         <div class="logo-img">
-          <img :src="imgLogo" alt="" />
+          <i
+            style="color: #000 !important; margin-top: 0.32rem;"
+            class="material-icons"
+            >adb</i
+          >
         </div>
       </a>
 
@@ -47,7 +51,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: "Vue MD"
+      default: "Deka Front"
     },
     sidebarBackgroundImage: {
       type: String,
@@ -88,7 +92,7 @@ export default {
   }
 };
 </script>
-<style>
+<style lang="scss" scoped>
 @media screen and (min-width: 991px) {
   .nav-mobile-menu {
     display: none;
