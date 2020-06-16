@@ -12,6 +12,8 @@ import GlobalDirectives from "./globalDirectives";
 import MaterialDashboard from "./material-dashboard";
 
 import Chartist from "chartist";
+import axios from "axios";
+import VueAxios from "vue-plugin-axios";
 
 // configure router
 const router = new VueRouter({
@@ -20,6 +22,31 @@ const router = new VueRouter({
 });
 
 Vue.prototype.$Chartist = Chartist;
+
+Vue.use(VueAxios, {
+  axios,
+  config: {
+    baseURL: "http://192.168.1.2:5000",
+    useCredentails: true
+  },
+  interceptors: {
+    beforeRequest(config) {
+      const token = localStorage.token;
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+      return config;
+    },
+    beforeResponseError(error) {
+      // const { response, message } = error
+      // if (response) {
+      //   alert(error.response.data.message)
+      // } else if (message) {
+      //   alert(message)
+      // }
+    }
+  }
+});
 
 Vue.use(VueRouter);
 Vue.use(MaterialDashboard);

@@ -1,7 +1,5 @@
 <template>
   <div class="wrapper" :class="{ 'nav-open': $sidebar.showSidebar }">
-    <notifications></notifications>
-
     <side-bar
       :sidebar-item-color="sidebarBackground"
       :sidebar-background-image="sidebarBackgroundImage"
@@ -17,7 +15,11 @@
       </sidebar-link>
       <sidebar-link to="/service">
         <md-icon>settings</md-icon>
-        <p>Service</p>
+        <p>Services</p>
+      </sidebar-link>
+      <sidebar-link to="/service-inner">
+        <md-icon>add</md-icon>
+        <p>Add Service</p>
       </sidebar-link>
     </side-bar>
 

@@ -1,10 +1,5 @@
 <template>
-  <div
-    class="sidebar"
-    :data-color="sidebarItemColor"
-    :data-image="sidebarBackgroundImage"
-    :style="sidebarStyle"
-  >
+  <div class="sidebar" :data-color="sidebarItemColor" :style="sidebarStyle">
     <div class="logo">
       <a href="#" class="simple-text logo-mini">
         <div class="logo-img">
@@ -53,10 +48,6 @@ export default {
       type: String,
       default: "Deka Front"
     },
-    sidebarBackgroundImage: {
-      type: String,
-      default: require("@/assets/img/sidebar-2.jpg")
-    },
     imgLogo: {
       type: String,
       default: require("@/assets/img/vue-logo.png")
@@ -86,7 +77,7 @@ export default {
   computed: {
     sidebarStyle() {
       return {
-        backgroundImage: `url(${this.sidebarBackgroundImage})`
+        backgroundColor: "#2c3e50"
       };
     }
   }

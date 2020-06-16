@@ -13,6 +13,7 @@
     </md-card-actions>
   </md-card>
 </template>
+
 <script>
 export default {
   name: "stats-card",

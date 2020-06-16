@@ -1,36 +1,56 @@
 <template>
   <div class="content">
     <div class="md-layout">
-      <div
-        class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-33"
+      <router-link
+        class="service-card md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-25"
+        v-for="(serv, index) in services"
+        :key="index"
+        tag="div"
+        :to="'service-detail?id=' + serv.main._id"
       >
-        <router-link to="/instructions" class="service-item" tag="div"
-          >Instructions</router-link
-        >
-      </div>
-      <div
-        class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-33"
-      >
-        <router-link to="/example" class="service-item" tag="div"
-          >Example</router-link
-        >
-      </div>
-      <div
-        class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-33"
-      >
-        <router-link to="/service-inner" class="service-item" tag="div"
-          >Service</router-link
-        >
-      </div>
+        <div class="card-img">
+          <img :src="serv.main.main.image" alt="" />
+        </div>
+        <h4>{{ serv.main.main.name }}</h4>
+        <p>{{ serv.main.main.description }}</p>
+      </router-link>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data: () => ({
+    services: []
+  }),
+  async created() {
+    const services = await this.$axios.get("services");
+    this.services = services.data;
+  }
+};
 </script>
 
 <style lang="scss" scoped>
+.service-card {
+  cursor: pointer;
+  background: #fff;
+  padding: 1.25rem;
+  border-radius: 0.5rem;
+  margin-left: 1.5rem;
+  transition: 0.5s ease-in-out;
+  h4 {
+    font-weight: bolder;
+  }
+  p {
+    margin-bottom: 0;
+  }
+  &:hover {
+    -webkit-box-shadow: 0px 0px 14px -5px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 14px -5px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 14px -5px rgba(0, 0, 0, 0.75);
+    transition: 0.5s ease-in-out;
+  }
+}
 .md-layout {
   div {
     .service-item {
@@ -43,38 +63,12 @@ export default {};
       color: #fff;
       font-size: 2rem;
       font-weight: bolder;
-    }
-    &:nth-child(1) {
-      .service-item {
-        background: #2cc990;
-        &:hover {
-          transition: 0.3s ease-in-out;
-          background: #fff;
-          border: 0.0625rem solid #2cc990;
-          color: #000;
-        }
-      }
-    }
-    &:nth-child(2) {
-      .service-item {
-        background: #9684a3;
-        &:hover {
-          transition: 0.3s ease-in-out;
-          background: #fff;
-          border: 0.0625rem solid #9684a3;
-          color: #000;
-        }
-      }
-    }
-    &:nth-child(3) {
-      .service-item {
-        background: #444b54;
-        &:hover {
-          transition: 0.3s ease-in-out;
-          background: #fff;
-          border: 0.0625rem solid #444b54;
-          color: #000;
-        }
+      background: #2cc990;
+      &:hover {
+        transition: 0.3s ease-in-out;
+        background: #fff;
+        border: 0.0625rem solid #2cc990;
+        color: #000;
       }
     }
   }
