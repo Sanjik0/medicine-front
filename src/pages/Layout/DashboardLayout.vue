@@ -21,6 +21,9 @@
         <md-icon>add</md-icon>
         <p>Add Service</p>
       </sidebar-link>
+      <button class="exit-btn" @click="exit">
+        Exit
+      </button>
     </side-bar>
 
     <div class="main-panel">
@@ -51,6 +54,32 @@ export default {
       sidebarBackground: "green",
       sidebarBackgroundImage: require("@/assets/img/sidebar-2.jpg")
     };
+  },
+  methods: {
+    exit() {
+      sessionStorage.clear();
+      this.$router.push("/login");
+    }
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.exit-btn {
+  width: 100%;
+  max-width: 12rem;
+  margin: 0 auto;
+  cursor: pointer;
+  padding: 0.7rem 1rem;
+  border-radius: 0.25rem;
+  border: 0;
+  background: red;
+  color: #fff;
+  margin-top: 0.7rem;
+  &:hover {
+    transition: 0.5s ease-in-out;
+    background: #fff;
+    color: red;
+  }
+}
+</style>

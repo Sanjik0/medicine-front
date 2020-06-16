@@ -24,6 +24,10 @@ export default {
     services: []
   }),
   async created() {
+    if (!sessionStorage.token) {
+      this.$router.push("/login");
+    }
+
     const services = await this.$axios.get("services");
     this.services = services.data;
   }

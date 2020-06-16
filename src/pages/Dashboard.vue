@@ -175,6 +175,11 @@ export default {
         ]
       }
     };
+  },
+  created() {
+    if (!sessionStorage.token) {
+      this.$router.push("/login");
+    }
   }
 };
 </script>

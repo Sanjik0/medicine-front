@@ -18,6 +18,11 @@ export default {
   components: {
     EditProfileForm,
     UserCard
+  },
+  created() {
+    if (!sessionStorage.token) {
+      this.$router.push("/login");
+    }
   }
 };
 </script>

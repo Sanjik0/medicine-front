@@ -113,6 +113,10 @@ export default {
     }
   },
   async created() {
+    if (!sessionStorage.token) {
+      this.$router.push("/login");
+    }
+
     const service = await this.$axios.get(`service/${this.$route.query.id}`);
     this.service = service.data;
     console.log(this.service);

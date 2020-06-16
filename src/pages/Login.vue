@@ -21,6 +21,12 @@
               >Login</md-button
             >
           </div>
+          <p
+            v-if="isActive"
+            style="text-align: center; font-size: 1rem; font-weight: bolder"
+          >
+            Подтвердите электронную почту
+          </p>
         </div>
       </md-card-content>
     </div>
@@ -33,12 +39,19 @@ export default {
     loginData: {
       email: "",
       password: ""
-    }
+    },
+    isActive: false
   }),
   methods: {
-    login() {
-      const loginData = this.$axios.post("user/login", this.loginData);
-      console.log(loginData);
+    async login() {
+      const loginData = await this.$axios.post("user/login", this.loginData);
+      sessionStorage.token = loginData.data.token;
+
+      if (loginData.data.active == true) {
+        this.$router.push("/dashboard");
+      } else {
+        this.isActive = true;
+      }
     }
   }
 };
