@@ -19,10 +19,6 @@ export default {
     EditProfileForm,
     UserCard
   },
-  created() {
-    if (!sessionStorage.token) {
-      this.$router.push("/login");
-    }
-  }
+  created() {}
 };
 </script>

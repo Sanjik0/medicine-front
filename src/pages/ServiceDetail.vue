@@ -7,20 +7,20 @@
         >
           <div class="service">
             <div class="card-img">
-              <img :src="service.main.main.image" alt="" />
+              <img :src="service.main.image" alt="" />
             </div>
             <div class="card-info">
-              <h3>{{ service.main.main.name }}</h3>
-              <p>{{ service.main.main.description }}</p>
+              <h3>{{ service.main.name }}</h3>
+              <p>{{ service.main.description }}</p>
             </div>
           </div>
           <div class="service-example">
             <h3>Example</h3>
-            <p>{{ service.example.example.exampleDescription }}</p>
+            <p>{{ service.example.exampleDescription }}</p>
             <div class="example-images">
               <div
                 class="example-img"
-                v-for="(img, index) in service.example.example.exampleImages"
+                v-for="(img, index) in service.example.exampleImages"
                 :key="index"
               >
                 <img :src="img.path" />
@@ -74,7 +74,28 @@ import VueUploadMultipleImage from "vue-upload-multiple-image";
 
 export default {
   data: () => ({
-    service: {},
+    service: {
+      main: {
+        _id: 1,
+        image:
+          "https://www.belpressa.ru/media/filer_public/37/aa/37aab313-6a24-4d43-bf99-9975f7246d03/1cee90bfda11cd2c108f0d3749d1f5a4.jpg.640x480_q75_upscale.jpg",
+        name: "Распознавание раковых клеток",
+        description: "Распознавание раковых клеток при помощи нейронных сетей"
+      },
+      example: {
+        exampleDescription: "Чтобы получить результаты, загрузите картинку",
+        exampleImages: [
+          {
+            path:
+              "https://www.belpressa.ru/media/filer_public/37/aa/37aab313-6a24-4d43-bf99-9975f7246d03/1cee90bfda11cd2c108f0d3749d1f5a4.jpg.640x480_q75_upscale.jpg"
+          },
+          {
+            path:
+              "https://www.belpressa.ru/media/filer_public/37/aa/37aab313-6a24-4d43-bf99-9975f7246d03/1cee90bfda11cd2c108f0d3749d1f5a4.jpg.640x480_q75_upscale.jpg"
+          }
+        ]
+      }
+    },
     myImages: [],
     neuronResults: [],
     result: "",
@@ -113,13 +134,9 @@ export default {
     }
   },
   async created() {
-    if (!sessionStorage.token) {
-      this.$router.push("/login");
-    }
-
-    const service = await this.$axios.get(`service/${this.$route.query.id}`);
-    this.service = service.data;
-    console.log(this.service);
+    // const service = await this.$axios.get(`service/${this.$route.query.id}`);
+    // this.service = service.data;
+    // console.log(this.service);
   }
 };
 </script>

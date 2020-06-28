@@ -9,10 +9,10 @@
         :to="'service-detail?id=' + serv.main._id"
       >
         <div class="card-img">
-          <img :src="serv.main.main.image" alt="" />
+          <img :src="serv.main.image" alt="" />
         </div>
-        <h4>{{ serv.main.main.name }}</h4>
-        <p>{{ serv.main.main.description }}</p>
+        <h4>{{ serv.main.name }}</h4>
+        <p>{{ serv.main.description }}</p>
       </router-link>
     </div>
   </div>
@@ -21,16 +21,37 @@
 <script>
 export default {
   data: () => ({
-    services: []
+    services: [
+      {
+        main: {
+          _id: 1,
+          image:
+            "https://www.belpressa.ru/media/filer_public/37/aa/37aab313-6a24-4d43-bf99-9975f7246d03/1cee90bfda11cd2c108f0d3749d1f5a4.jpg.640x480_q75_upscale.jpg",
+          name: "Распознавание раковых клеток",
+          description: "Распознавание раковых клеток при помощи нейронных сетей"
+        }
+      },
+      {
+        main: {
+          _id: 1,
+          image:
+            "https://www.belpressa.ru/media/filer_public/37/aa/37aab313-6a24-4d43-bf99-9975f7246d03/1cee90bfda11cd2c108f0d3749d1f5a4.jpg.640x480_q75_upscale.jpg",
+          name: "Распознавание раковых клеток",
+          description: "Распознавание раковых клеток при помощи нейронных сетей"
+        }
+      },
+      {
+        main: {
+          _id: 1,
+          image:
+            "https://www.belpressa.ru/media/filer_public/37/aa/37aab313-6a24-4d43-bf99-9975f7246d03/1cee90bfda11cd2c108f0d3749d1f5a4.jpg.640x480_q75_upscale.jpg",
+          name: "Распознавание раковых клеток",
+          description: "Распознавание раковых клеток при помощи нейронных сетей"
+        }
+      }
+    ]
   }),
-  async created() {
-    if (!sessionStorage.token) {
-      this.$router.push("/login");
-    }
-
-    const services = await this.$axios.get("services");
-    this.services = services.data;
-  }
+  async created() {}
 };
 </script>
 

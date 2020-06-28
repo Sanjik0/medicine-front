@@ -4,7 +4,7 @@
       <div class="copyright text-center">
         &copy; {{ new Date().getFullYear() }}
         <a href="https://www.creative-tim.com/?ref=mdf-vuejs" target="_blank"
-          >Deka Front</a
+          >Developed by Sanzhar Toktaganov</a
         >
       </div>
     </div>

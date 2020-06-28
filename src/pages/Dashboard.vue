@@ -176,10 +176,6 @@ export default {
       }
     };
   },
-  created() {
-    if (!sessionStorage.token) {
-      this.$router.push("/login");
-    }
-  }
+  created() {}
 };
 </script>

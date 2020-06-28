@@ -26,7 +26,7 @@ Vue.prototype.$Chartist = Chartist;
 Vue.use(VueAxios, {
   axios,
   config: {
-    baseURL: "http://192.168.1.2:5000",
+    baseURL: "API",
     useCredentails: true
   },
   interceptors: {
